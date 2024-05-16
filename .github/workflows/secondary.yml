@@ -7,6 +7,10 @@ on:
     branches: [main]
     paths:
       - .github/workflows/secondary.yml
+  workflow_run:
+    workflows: ["Primary Workflow"]
+    types:
+      - completed
   workflow_dispatch:
 # on:
 #   workflow_run:
@@ -16,8 +20,9 @@ on:
 
 jobs:
   build:
-    if: github.event.workflow_run.conclusion == 'success' && contains(github.event.workflow_run.head_commit.message, '[demo-trigger]')
+    if: ${{ contains( github.event.pull_request.labels.*.name, 'demo-trigger') }}
     runs-on: ubuntu-latest
     steps:
       - name: Your BBB Workflow Steps
+        run: echo ("Secondary workflow")
         # Add your steps here

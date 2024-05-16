@@ -8,6 +8,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Your Primary Workflow Steps
-        run: echo ("hello")
+      - name: Add demo-trigger label
+        uses: actions/checkout@v2
 
+      - name: Add demo-trigger label
+        run: |
+          gh pr edit "$PR_NUMBER" --add-label "demo-trigger"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+      
+      - name: Add extra line to secondary.yml
+        run: |
+          sed -i '$a\Extra line added by AAA workflow' .github/workflows/secondary.yml
+
+      - name: Create dummy commit
+        run: |
+          git config --global user.name "thejaswitricon"
+          git config --global user.email "thejaswi.cy@triconinfotech.com"
+          echo "Dummy commit" >> dummy.txt
+          git add .
+          git commit -m "Add dummy commit"
+
+      - name: Rebase changes on remote branch
+        run: |
+          git fetch origin test
+          git rebase origin/test
+      
+      - name: Push changes
+        run: |
+          git push origin HEAD:${{ github.head_ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
