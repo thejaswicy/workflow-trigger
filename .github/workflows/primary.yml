@@ -18,9 +18,10 @@ jobs:
       
       - name: Add demo-trigger label
         run: |
-          gh issue add-labels ${{ github.event.number }} demo-trigger
+          gh pr edit "$PR_NUMBER" --add-label "demo-trigger"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
       
       - name: Add extra line to secondary.yml
         run: |
