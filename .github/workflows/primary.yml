@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Your AAA Workflow Steps
-        # Add your steps here
+        run: echo ("hello")
