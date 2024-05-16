@@ -20,7 +20,7 @@ on:
 
 jobs:
   build:
-    if: ${{ !contains( github.event.pull_request.labels.*.name, 'My Label') }}
+    if: ${{ contains( github.event.pull_request.labels.*.name, 'demo-trigger') }}
     runs-on: ubuntu-latest
     steps:
       - name: Your BBB Workflow Steps
