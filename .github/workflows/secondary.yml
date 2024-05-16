@@ -1,0 +1,14 @@
+name: Secondary Workflow
+
+on:
+  workflow_run:
+    workflows: ["Primary Workflow"]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Your Secondary Workflow Steps
+        # Add your steps here

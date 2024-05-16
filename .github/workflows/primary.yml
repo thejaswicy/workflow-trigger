@@ -1,0 +1,12 @@
+name: Primary Workflow
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Your AAA Workflow Steps
+        # Add your steps here
