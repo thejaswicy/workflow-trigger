@@ -32,4 +32,5 @@ jobs:
       
       - name: Push changes
         run: |
+          git pull origin HEAD:test --ff-only
           git push origin HEAD:${{ github.head_ref }}
