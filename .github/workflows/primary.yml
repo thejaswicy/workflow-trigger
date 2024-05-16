@@ -8,6 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Your AAA Workflow Steps
+      - name: Your Primary Workflow Steps
         run: echo ("hello")
 
