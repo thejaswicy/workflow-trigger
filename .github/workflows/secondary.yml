@@ -20,5 +20,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Your BBB Workflow Steps
+        run: echo ("Secondary workflow")
         # Add your steps here
-        
