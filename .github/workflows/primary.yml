@@ -2,11 +2,12 @@ name: Primary Workflow
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Your AAA Workflow Steps
+      - name: Your Primary Workflow Steps
         run: echo ("hello")
+
