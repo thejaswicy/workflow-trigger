@@ -20,7 +20,7 @@ on:
 
 jobs:
   build:
-    if: ${{ contains(github.event.workflow_run.head_commit.message, '[demo-trigger]') }}
+    # if: ${{ contains(github.event.workflow_run.head_commit.message, '[demo-trigger]') }}
     runs-on: ubuntu-latest
     steps:
       - name: Your BBB Workflow Steps
