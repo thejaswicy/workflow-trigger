@@ -1,10 +1,18 @@
 name: Secondary Workflow
 
 on:
-  workflow_run:
-    workflows: ["Primary Workflow"]
-    types:
-      - completed
+  pull_request:
+    branches: [main, master, develop, 'releases/**', 'feat/**', 'fix/**']
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/secondary.yml
+  workflow_dispatch:
+# on:
+#   workflow_run:
+#     workflows: ["Primary Workflow"]
+#     types:
+#       - completed
 
 jobs:
   build:
