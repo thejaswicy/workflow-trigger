@@ -16,3 +16,15 @@ jobs:
           gh pr label add ${{ github.event.number }} demo-trigger
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: Add extra line to secondary.yml
+        run: |
+          sed -i '$a\Extra line added by AAA workflow' .github/workflows/secondary.yml
+      
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "thejaswitricon"
+          git config --global user.email "thejaswi.cy@triconinfotech.com"
+          git add .github/workflows/secondary.yml
+          git commit -m "Add extra line to secondary.yml"
+          git push origin HEAD:${{ github.head_ref }}
