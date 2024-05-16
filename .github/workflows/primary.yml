@@ -2,7 +2,7 @@ name: Primary Workflow
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
@@ -10,4 +10,3 @@ jobs:
     steps:
       - name: Your AAA Workflow Steps
         run: echo ("hello")
-        
