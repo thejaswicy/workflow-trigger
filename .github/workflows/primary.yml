@@ -8,6 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Your Primary Workflow Steps
-        run: echo ("hello")
-
+      - name: Add demo-trigger label
+        uses: actions/checkout@v2
+        
+      - name: Add label
+        run: |
+          gh pr label add ${{ github.event.number }} demo-trigger
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
