@@ -26,7 +26,7 @@ jobs:
         run: |
           git config --global user.name "thejaswitricon"
           git config --global user.email "thejaswi.cy@triconinfotech.com"
-          git pull
+          git pull origin test
           git add .github/workflows/secondary.yml
           git commit -m "Add extra line to secondary.yml"
           git push origin HEAD:${{ github.head_ref }}
