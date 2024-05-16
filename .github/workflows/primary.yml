@@ -10,12 +10,7 @@ jobs:
     steps:
       - name: Add demo-trigger label
         uses: actions/checkout@v2
-        
-      - name: Set up Git
-        run: |
-          git config --global user.name "thejaswitricon"
-          git config --global user.email "thejaswi.cy@triconinfotech.com"
-      
+
       - name: Add demo-trigger label
         run: |
           gh pr edit "$PR_NUMBER" --add-label "demo-trigger"
@@ -29,6 +24,8 @@ jobs:
       
       - name: Commit and push changes
         run: |
+          git config --global user.name "thejaswitricon"
+          git config --global user.email "thejaswi.cy@triconinfotech.com"
           git add .github/workflows/secondary.yml
           git commit -m "Add extra line to secondary.yml"
           git push origin HEAD:${{ github.head_ref }}
