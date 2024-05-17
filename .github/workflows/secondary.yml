@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    if: ${{ github.event.label.name == 'demo-trigger' }}
+    if: ${{ github.event.label.name != 'demo-trigger' }}
     runs-on: ubuntu-latest
     steps:
       - name: Your BBB Workflow Steps
