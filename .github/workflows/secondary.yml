@@ -2,16 +2,8 @@ name: Secondary Workflow
 
 on:
   pull_request:
-    branches: [main, master, develop, 'releases/**', 'feat/**', 'fix/**']
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/secondary.yml
-  workflow_run:
-    workflows: ["Primary Workflow"]
-    types:
-      - completed
-  workflow_dispatch:
+    types: [opened, synchronize, reopened]
+
 # on:
 #   workflow_run:
 #     workflows: ["Primary Workflow"]
@@ -20,9 +12,10 @@ on:
 
 jobs:
   build:
-    if: ${{ contains( github.event.pull_request.labels.*.name, 'demo-trigger') }}
+    # if: contains(github.event.pull_request.labels.*.name, 'demo-trigger')
     runs-on: ubuntu-latest
     steps:
       - name: Your BBB Workflow Steps
         run: echo ("Secondary workflow")
         # Add your steps here
+
