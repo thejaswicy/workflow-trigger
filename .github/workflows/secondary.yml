@@ -12,10 +12,9 @@ on:
 
 jobs:
   build:
-    if: contains(github.event.issue.labels.*.name, 'demo-trigger')
+    if: ${{ github.event.label.name == 'demo-trigger' }}
     runs-on: ubuntu-latest
     steps:
       - name: Your BBB Workflow Steps
         run: echo ("Secondary workflow")
         # Add your steps here
-        
